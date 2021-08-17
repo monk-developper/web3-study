@@ -1,30 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
-import SelectList from './components/SelectList'
+import MethodSelectList from './components/MethodSelectList'
+import MethodLogs from './components/MethodLogs'
 import Box from '@material-ui/core/Box'
-import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Execution from './components/Execution'
-
-const useStyles = makeStyles({
-  methodButton: {
-    margin: '20px',
-  },
-})
+import Props from './Types/Props'
+import method from './Types/method'
+import log from './Types/log'
+import methodsJson from './components/Method.json'
 
 const App: React.FC = () => {
-  const classes = useStyles()
+  const [selectId, setSelectId] = useState<number>(0)
+  const [MethodList, setMethodList] = useState<Array<method>>([])
+  const [MethodLog, setMthodLog] = useState<Array<log>>([])
+  useEffect(() => {
+    setMethodList(methodsJson)
+  })
   return (
     <Box m={4} sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item>
-          <SelectList></SelectList>
+          <MethodSelectList
+            selectid={selectId}
+            MethodLog={MethodLog}
+            MethodList={MethodList}
+            setSelectId={setSelectId}
+          ></MethodSelectList>
         </Grid>
         <Grid item>
           <Execution></Execution>
         </Grid>
       </Grid>
-      <Grid item></Grid>
+      <Grid item>
+        <MethodLogs></MethodLogs>
+      </Grid>
     </Box>
   )
 }

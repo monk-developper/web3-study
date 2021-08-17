@@ -1,5 +1,4 @@
 import React from 'react'
-
-const provider = window.ethereum
- 
+declare let window: any
+const provider: any = window.ethereum
 export default provider

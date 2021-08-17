@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1,
+    "host": "MetaMask",
+    "method": "connection",
+    "library": "none"
+  }
+]
