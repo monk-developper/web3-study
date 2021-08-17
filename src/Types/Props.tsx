@@ -2,10 +2,10 @@ import logType from './log'
 import MethodType from './method'
 
 interface Props {
-  selectid: number
-  MethodLog: Array<logType>
+  selectMethod?: string
+  MethodLog?: Array<logType>
   MethodList: Array<MethodType>
-  setSelectId?: any
+  setMethod?: any
 }
 
 export default Props

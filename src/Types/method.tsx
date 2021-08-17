@@ -1,7 +1,6 @@
 interface MethodType {
-  id: number
   host: string
-  method: string
+  method: string | number | readonly string[] | undefined
   library: string
 }
 

@@ -1,5 +1,4 @@
 interface logType {
-  id: number
   host: string
   method: string
   Library: string

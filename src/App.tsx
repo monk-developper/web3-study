@@ -11,25 +11,29 @@ import log from './Types/log'
 import methodsJson from './components/Method.json'
 
 const App: React.FC = () => {
-  const [selectId, setSelectId] = useState<number>(0)
-  const [MethodList, setMethodList] = useState<Array<method>>([])
+  const t = methodsJson
+
+  const [selectMethod, setMethod] = useState<string>('')
+  const [MethodList, setMethodList] = useState<Array<method>>(t)
   const [MethodLog, setMthodLog] = useState<Array<log>>([])
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     setMethodList(methodsJson)
   })
+
   return (
     <Box m={4} sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item>
           <MethodSelectList
-            selectid={selectId}
-            MethodLog={MethodLog}
+            selectMethod={selectMethod}
             MethodList={MethodList}
-            setSelectId={setSelectId}
+            setMethod={setMethod}
           ></MethodSelectList>
         </Grid>
         <Grid item>
-          <Execution></Execution>
+          <Execution selectMethod={selectMethod} MethodList={MethodList}></Execution>
         </Grid>
       </Grid>
       <Grid item>

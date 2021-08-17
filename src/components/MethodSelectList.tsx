@@ -17,15 +17,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-const MethodSelectList: React.FC<Props> = ({ selectid, MethodList, setSelectId }) => {
+const MethodSelectList: React.FC<Props> = ({ selectMethod, MethodList, setMethod }) => {
   const classes = useStyles()
 
-  // const selectMethod = MethodList.filter((method) => method.id === selectid)
-  // console.log('selectMethod', selectMethod)
-
   const selectOnChange = (event: any) => {
-    console.log(selectid)
-    console.log(setSelectId)
+    setMethod(event.target.value)
   }
 
   return (
@@ -36,7 +32,7 @@ const MethodSelectList: React.FC<Props> = ({ selectid, MethodList, setSelectId }
           <option></option>
           {MethodList.map((method, index) => {
             return (
-              <option key={index} value={method.id}>
+              <option key={index} value={method.method}>
                 {method.host + '/' + method.method}
               </option>
             )
