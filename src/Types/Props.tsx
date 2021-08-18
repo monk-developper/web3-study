@@ -3,9 +3,10 @@ import MethodType from './method'
 
 interface Props {
   selectMethod?: string
-  MethodLog?: Array<logType>
+  LogList: Array<logType>
   MethodList: Array<MethodType>
   setMethod?: any
+  setLog?: any
 }
 
 export default Props

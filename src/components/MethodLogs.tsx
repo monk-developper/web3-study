@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import Props from '../Types/Props'
+import MethodType from '../Types/method'
 
 const useStyles = makeStyles({
   table: {
@@ -20,9 +22,9 @@ function createData(host: string, method: string, library: string, log: string, 
 
 const rows = [createData('HOST名', 'メソッド名', 'ライブラリー', 'LOG', '次のメソッド', 'ステータス')]
 
-const MethodLogs: React.FC = () => {
+const MethodLogs: React.FC<Props> = ({ selectMethod, MethodList, LogList, setLog }) => {
   const classes = useStyles()
-  console.log('rows', rows)
+  console.log('MethodLogs:LogList', LogList)
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -38,8 +40,8 @@ const MethodLogs: React.FC = () => {
         </TableHead>
 
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.host}>
+          {LogList.map((row, index) => (
+            <TableRow key={index}>
               <TableCell align="right">{row.host}</TableCell>
               <TableCell align="right">{row.method}</TableCell>
               <TableCell align="right">{row.library}</TableCell>

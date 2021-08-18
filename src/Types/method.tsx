@@ -1,6 +1,6 @@
 interface MethodType {
   host: string
-  method: string | number | readonly string[] | undefined
+  method: string
   library: string
 }
 
