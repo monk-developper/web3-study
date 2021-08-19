@@ -19,6 +19,7 @@ const eth_requestAccounts = async () => {
     return responseLog
   } else {
     responseLog.log = 'MetaMask is installed'
+    console.log('eth_requestAccounts is success', account)
     responseLog.status = 'success'
     return responseLog
   }
