@@ -1,0 +1,7 @@
+[
+  {
+    "host": "MetaMask",
+    "method": "eth_requestAccounts",
+    "library": "none"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "host": "HOST名",
+    "method": "メソッド名",
+    "library": "ライブラリー",
+    "log": "内容",
+    "nextMethod": "次のメソッド",
+    "status": "ステータス"
+  }
+]

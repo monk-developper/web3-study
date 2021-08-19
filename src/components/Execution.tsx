@@ -1,18 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import Button from '@material-ui/core/Button'
-import provider from '../Metamask/MetaMask'
 import { makeStyles } from '@material-ui/core/styles'
-
-const Log = async () => {
-  if (typeof provider !== 'undefined') {
-    console.log('MetaMask is installed!')
-  }
-  provider.request({ method: 'eth_requestAccounts' })
-  const accounts = await provider.request({ method: 'eth_accounts' })
-  const account = accounts[0] || 'Not able to get accounts'
-  console.log(accounts)
-  console.log(account)
-}
+import Props from '../Types/Props'
+import MethodType from '../Types/method'
+import logType from '../Types/log'
+import eth_requestAccounts from '../Metamask/eth_requestAccounts'
 
 const useStyles = makeStyles({
   methodButton: {
@@ -20,11 +12,44 @@ const useStyles = makeStyles({
   },
 })
 
-const Execution: React.FC = () => {
+const Execution: React.FC<Props> = ({ selectMethod, MethodList, LogList, setLog }) => {
   const classes = useStyles()
+  console.log('Execution:LogList', LogList)
+
+  const runMethod = async (selectMethod: string | boolean | undefined, useMethod: MethodType) => {
+    if (!selectMethod) return false
+
+    let initlog: logType = {
+      host: useMethod.host,
+      method: useMethod.method,
+      library: useMethod.library,
+    }
+    let responseLog: logType
+
+    switch (selectMethod) {
+      case 'eth_requestAccounts':
+        responseLog = await eth_requestAccounts()
+        break
+      default:
+        responseLog = {
+          library: 'none method',
+        }
+    }
+    initlog = { ...initlog, ...responseLog }
+    LogList.unshift(initlog)
+    setLog([...LogList])
+  }
+
+  const useMethod = MethodList.filter((value) => value.method === selectMethod)[0]
+
   return (
     <>
-      <Button onClick={Log} className={classes.methodButton} variant="contained" color="primary">
+      <Button
+        onClick={() => runMethod(selectMethod, useMethod)}
+        className={classes.methodButton}
+        variant="contained"
+        color="primary"
+      >
         execution
       </Button>
     </>
