@@ -16,6 +16,16 @@ const App: React.FC = () => {
   const [MethodList, setMethodList] = useState<Array<method>>(methodsJson)
   const [LogList, setLog] = useState<Array<log>>([])
 
+
+
+
+
+
+
+
+
+
+  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log('useEffect')
