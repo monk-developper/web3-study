@@ -3,5 +3,10 @@
     "host": "MetaMask",
     "method": "eth_requestAccounts",
     "library": "none"
+  },
+  {
+    "host": "HelloContract",
+    "method": "memoryChange",
+    "library": "none"
   }
 ]

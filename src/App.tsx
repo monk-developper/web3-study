@@ -10,6 +10,7 @@ import method from './Types/method'
 import log from './Types/log'
 import methodsJson from './components/Method.json'
 import logJson from './components/log.json'
+import getWeb3 from './Metamask/getWeb3'
 
 const App: React.FC = () => {
   const [selectMethod, setMethod] = useState<string>('')

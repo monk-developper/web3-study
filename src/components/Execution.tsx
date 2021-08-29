@@ -5,6 +5,7 @@ import Props from '../Types/Props'
 import MethodType from '../Types/method'
 import logType from '../Types/log'
 import eth_requestAccounts from '../Metamask/eth_requestAccounts'
+import HelloContract from '../Metamask/HelloContract'
 
 const useStyles = makeStyles({
   methodButton: {
@@ -29,6 +30,9 @@ const Execution: React.FC<Props> = ({ selectMethod, MethodList, LogList, setLog 
     switch (selectMethod) {
       case 'eth_requestAccounts':
         responseLog = await eth_requestAccounts()
+        break
+      case 'memoryChange':
+        responseLog = await HelloContract()
         break
       default:
         responseLog = {
