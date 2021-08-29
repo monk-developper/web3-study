@@ -7,6 +7,7 @@ interface Props {
   MethodList: Array<MethodType>
   setMethod?: any
   setLog?: any
+  value?: string
 }
 
 export default Props
