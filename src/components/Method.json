@@ -6,6 +6,11 @@
   },
   {
     "host": "HelloContract",
+    "method": "viewChange",
+    "library": "none"
+  },
+  {
+    "host": "HelloContractUpdate",
     "method": "memoryChange",
     "library": "none"
   }

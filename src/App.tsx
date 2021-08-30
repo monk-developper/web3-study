@@ -11,22 +11,25 @@ import log from './Types/log'
 import methodsJson from './components/Method.json'
 import logJson from './components/log.json'
 import getWeb3 from './Metamask/getWeb3'
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
+import TextField from '@material-ui/core/TextField'
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    inputText: {
+      margin: '8px',
+      width: '25ch',
+    },
+  }),
+)
 
 const App: React.FC = () => {
   const [selectMethod, setMethod] = useState<string>('')
   const [MethodList, setMethodList] = useState<Array<method>>(methodsJson)
   const [LogList, setLog] = useState<Array<log>>([])
+  const [value, setValue] = useState<string>('')
+  const classes = useStyles()
 
-
-
-
-
-
-
-
-
-
-  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     console.log('useEffect')
@@ -45,8 +48,29 @@ const App: React.FC = () => {
             setMethod={setMethod}
           ></MethodSelectList>
         </Grid>
+        {(() => {
+          if (selectMethod === 'memoryChange') {
+            return (
+              <Grid item>
+                <TextField
+                  className={classes.inputText}
+                  id="standard-basic"
+                  label="Text"
+                  onChange={(event) => setValue(event.target.value)}
+                />
+              </Grid>
+            )
+          }
+        })()}
+
         <Grid item>
-          <Execution selectMethod={selectMethod} LogList={LogList} MethodList={MethodList} setLog={setLog}></Execution>
+          <Execution
+            selectMethod={selectMethod}
+            LogList={LogList}
+            MethodList={MethodList}
+            setLog={setLog}
+            value={value}
+          ></Execution>
         </Grid>
       </Grid>
       <Grid item>
