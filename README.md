@@ -3,9 +3,9 @@
 #### Ganache
 
 `truffle-config.js`を読み取る
-networkが立ち上がる
+network が立ち上がる
 
-***
+---
 
 #### Truffle
 
@@ -23,10 +23,7 @@ truffle console
 
 ```
 
-
-
 対話
-
 
 ```
 
@@ -45,9 +42,12 @@ const Contract = await Contract.at(コントラクトアドレス)
 コントラクト本人の初期化
 
 > 注意
+
 <!-- :::note warn -->
+
 コントラクトアドレスのコントラクト初期化と、
 コントラクトの初期化は別物です！
+
 <!-- ::: -->
 
 ## MEMO
@@ -58,9 +58,10 @@ const Contract = await Contract.at(コントラクトアドレス)
   contracts_build_directory: path.join(__dirname, "client/src/contracts"),
 ```
 
-
 ## web3 commands
+
 https://web3js.readthedocs.io/en/v1.2.11/web3-eth.html
+
 ### 確認用
 
 私はこれでなんとなく動きを理解しました。
@@ -165,7 +166,6 @@ web3.eth.defaultAccount;
 
 ```
 
-
 getProtocolVersion
 
 ```
@@ -190,7 +190,7 @@ web3.eth.getTransactionReceipt('transactionHash').then(console.log);
 ```
 
 signTransaction
-web3.eth.accounts.signTransactionを使用して生成された、すでに署名されたトランザクションを送信します。
+web3.eth.accounts.signTransaction を使用して生成された、すでに署名されたトランザクションを送信します。
 
 ```
 
@@ -198,9 +198,9 @@ web3.eth.sendSignedTransaction(signedTransactionData [, callback])
 
 ```
 
-
 EstimateGas
 メッセージ呼び出しまたはトランザクションを実行し、使用されたガスの量を返します。
+
 ```
 
 web3.eth.estimateGas(callObject [, callback])
@@ -209,13 +209,14 @@ web3.eth.estimateGas(callObject [, callback])
 
 getProof
 マークルプルーフを含む、指定されたアカウントのアカウントとストレージ値を返します。
+
 ```
 
 web3.eth.estimateGas(callObject [, callback])
 
 ```
-### 実装では必要そう
 
+### 実装では必要そう
 
 BatchRequest
 バッチリクエストを作成して実行するクラス。
@@ -242,7 +243,6 @@ web3.eth.handleRevert = true;
 
 ```
 
-
 getStorageAt
 
 ```
@@ -250,19 +250,17 @@ web3.eth.getStorageAt("CONTRACT_ADDRESS", 0)
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ビルドパスを指定
+
+## ropsten deploy
+
+１ニーモニックに対して、
+１０のアカウントが生成されている
+test 用の Wallet を作成した場合は、
+そのアカウントに ETH を移動しないといけない
+
+```
+
+npx truffle console --network ropsten
+
+```

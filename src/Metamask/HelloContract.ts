@@ -19,8 +19,10 @@ const HelloContract = async () => {
   const accounts = await web3.eth.getAccounts()
   const account = accounts[0]
 
-  let networkId = await web3.eth.net.getId()
-  const deployedNetwork = networks[5999]
+  const networkId = await web3.eth.net.getId()
+  const numberId: string = networkId.toString()
+  let id = numberId as keyof typeof networks
+  const deployedNetwork = networks[id]
   const contractInstance = new web3.eth.Contract(abi as AbiItem[], deployedNetwork && deployedNetwork.address)
   const result = await contractInstance.methods.message().call()
 

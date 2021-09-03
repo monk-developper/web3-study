@@ -32,7 +32,7 @@ const Execution: React.FC<Props> = ({ selectMethod, MethodList, LogList, setLog,
       case 'eth_requestAccounts':
         responseLog = await eth_requestAccounts()
         break
-      case 'viewChange':
+      case 'memoryView':
         responseLog = await HelloContract()
         break
       case 'memoryChange':

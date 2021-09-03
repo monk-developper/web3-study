@@ -6,7 +6,7 @@
   },
   {
     "host": "HelloContract",
-    "method": "viewChange",
+    "method": "memoryView",
     "library": "none"
   },
   {
