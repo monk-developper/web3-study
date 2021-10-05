@@ -1,5 +1,14 @@
 ## 仕様コマンド
 
+await router.buyTokenRouter(tA.address, "100","1000000000000000000000" , {from:accounts[0] , value:"100"})
+await router.sellTokenRouter(tA.address, "100","100000000000000000000" , {from:accounts[0] , value:"100"})
+`buyTokenRouter`コントラクトメソッド
+`tA.address`トークンコントラクト
+`100`
+`1000000000000000000000`売買数量
+`{from:accounts[0] ` 送信先のアドレス
+`, value:"100"}`
+
 #### Ganache
 
 `truffle-config.js`を読み取る

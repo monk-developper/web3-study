@@ -1,10 +1,12 @@
 import provider from './provider'
-import { abi, networks } from '../contracts/Hello.json'
+// import { abi, networks } from '../contracts/Router.json'
+// import { abi, networks } from '../contracts/ERC20.json'
+import { abi, networks } from '../contracts/TokenA.json'
 import Web3 from 'web3'
 import logType from '../Types/log'
 import { AbiItem } from 'web3-utils'
 
-const HelloContract = async () => {
+const getBlanceTokenAtoRouter = async () => {
   const responseLog: logType = {
     log: '',
     nextMethod: 'none',
@@ -13,8 +15,10 @@ const HelloContract = async () => {
 
   if (typeof provider !== 'undefined') {
     console.log('MetaMask is installed!')
+  } else {
+    responseLog.log = 'can not connect to MetaMask'
+    return responseLog
   }
-
   const web3 = new Web3(provider)
   const accounts = await web3.eth.getAccounts()
   const account = accounts[0]
@@ -24,14 +28,14 @@ const HelloContract = async () => {
   let id = numberId as keyof typeof networks
   const deployedNetwork = networks[id]
   const contractInstance = new web3.eth.Contract(abi as AbiItem[], deployedNetwork && deployedNetwork.address)
-  const result = await contractInstance.methods.message().call()
 
-  responseLog.log = result
+  const accountBlance = await web3.eth.getBalance('0x1DcC07227498741120377E0F8165BF130858EB97')
+  const tokenBlance = await contractInstance.methods.balances('0x1DcC07227498741120377E0F8165BF130858EB97').call()
+  const etherValue = Web3.utils.fromWei(tokenBlance, 'ether')
+  responseLog.log = etherValue
   responseLog.status = 'Success'
-
-  console.log('result', result)
 
   return responseLog
 }
 
-export default HelloContract
+export default getBlanceTokenAtoRouter

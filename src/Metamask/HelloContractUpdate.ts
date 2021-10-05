@@ -37,6 +37,7 @@ const HelloContractUpdate = async (value: string | undefined) => {
     }
     await contractInstance.methods.update(value).send(option)
     responseLog.log = value
+    responseLog.status = 'Success'
     console.log('value', value)
   } catch (err) {
     console.log(err)

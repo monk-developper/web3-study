@@ -7,6 +7,9 @@ import logType from '../Types/log'
 import eth_requestAccounts from '../Metamask/eth_requestAccounts'
 import HelloContract from '../Metamask/HelloContract'
 import HelloContractUpdate from '../Metamask/HelloContractUpdate'
+import TokenAGetBlance from '../Metamask/TokenAGetBlance'
+import getBlanceTokenAtoRouter from '../Metamask/getBlanceTokenAtoRouter'
+import buy10TokenA from '../Metamask/buy10TokenA'
 
 const useStyles = makeStyles({
   methodButton: {
@@ -37,6 +40,18 @@ const Execution: React.FC<Props> = ({ selectMethod, MethodList, LogList, setLog,
         break
       case 'memoryChange':
         responseLog = await HelloContractUpdate(value)
+        break
+      case 'TokenAgetBlance':
+        responseLog = await TokenAGetBlance()
+        break
+      case 'getBlanceTokenAtoRouter':
+        responseLog = await getBlanceTokenAtoRouter()
+        break
+      case 'buy10TokenA':
+        responseLog = await buy10TokenA()
+        break
+      case 'sell10TokenA':
+        responseLog = await TokenAGetBlance()
         break
       default:
         responseLog = {

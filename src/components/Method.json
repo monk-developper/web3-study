@@ -13,5 +13,25 @@
     "host": "HelloContractUpdate",
     "method": "memoryChange",
     "library": "none"
+  },
+  {
+    "host": "TokenA",
+    "method": "TokenAgetBlance",
+    "library": "none"
+  },
+  {
+    "host": "TokenA",
+    "method": "getBlanceTokenAtoRouter",
+    "library": "none"
+  },
+  {
+    "host": "Router",
+    "method": "buy10TokenA",
+    "library": "none"
+  },
+  {
+    "host": "Router",
+    "method": "sell10TokenA",
+    "library": "none"
   }
 ]
