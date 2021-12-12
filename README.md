@@ -1,3 +1,7 @@
+## sample
+
+[![smple](./sample.gif)]()
+
 ## 仕様コマンド
 
 await router.buyTokenRouter(tA.address, "100","1000000000000000000000" , {from:accounts[0] , value:"100"})
